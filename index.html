@@ -22,8 +22,8 @@
     <input type="text" placeholder="имя скласса" value="default">
     <p>  контент для элемента</p>
     <textarea> test </textarea>
-    <!--<input type="submit" value="Submit">-->
-    <input type="button" name="submit" value="Submit">
+    <input type="submit" value="Submit">
+    <!--<input type="button" name="submit" value="Submit">-->
     <!--<div class="button"></div>-->
     <div  id="playground"  class="insetdiv">
 
@@ -37,7 +37,7 @@
     var elemSubmit = document.getElementsByName("submit");
     var form = document.body.firstElementChild;
 //    var button = document.getElementsByClassName("button");
-   
+
     var elemAdd = document.createElement("p"); // тестовый елемент для вставки
     var elemAddP = document.createElement("p"); //  елемент для вставки
     var elemAddDiv = document.createElement("div"); //  елемент для вставки
@@ -65,7 +65,6 @@
         value = select.options[select.selectedIndex].value, // Значение value для выбранного option
         text = select.options[select.selectedIndex].text; // Текстовое значение для выбранного option
 //        alert("Value: " + value + "\nТекст: " + text); // Вывод алерта для проверки значений
-        alert(value); // Вывод алерта для проверки значений
 
         if ( value == 0) {
             elemAdd = elemAddDiv;
@@ -81,25 +80,26 @@
         }
         console.log(elemAdd);
 
-        var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент
-            elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса
-            content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду
-            elemAdd.appendChild(content); //вставляем ноду
-
-            div.appendChild(elemAdd);  // вставляем елемент
-
-
-//
     }
-//    form.onclick = function () {
-//                var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент
-//                elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса
-//                content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду
-//                elemAdd.appendChild(content); //вставляем ноду
-//
-//                div.appendChild(elemAdd);  // вставляем елемент
-//
-//            };
+    form.onsubmit = function (event) {
+        event.preventDefault();
+        var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент
+        elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса
+        content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду
+        elemAdd.appendChild(content); //вставляем ноду
+        console.log(div.length);
+//        div.removeChild(elemAdd); //удаляем стерое
+
+//        if (div.children.length =  1 ) {
+//            div.removeChild(elemAdd); //удаляем стерое
+//        }
+         div.appendChild(elemAdd);  // вставляем елемент
+
+
+//        div.appendChild(elemAdd);  // вставляем елемент
+        console.log(div.children.length);
+
+    };
 //
 //    console.log(form);
 //    console.log(document.getElementsByTagName("input")[0].getAttribute('value'));
