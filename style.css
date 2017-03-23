@@ -1,0 +1,35 @@
+html {
+
+}
+form {
+    margin: 0 auto;
+    width: 350px;
+    background-color: darkkhaki;
+    color: #c8c8c8;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px ;
+}
+select,input[type="submit"], input[type="button"],input[type="text"], textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-radius: 5px;
+    font-family: 'Bree Serif', serif;
+
+
+}
+select {
+    background-color: cyan;
+    /*margin: 10px;*/
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 20px;
+    text-align: center;
+}
+input[type="submit"] {
+
+}
+input[type="button"] {
+    background-color: snow;
+}

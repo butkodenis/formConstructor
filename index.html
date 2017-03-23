@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<form>
+    <select>
+        <option value="select">выберете елемент который хотите создать</option>
+        <option value="div">div </option>
+        <option value="span">span </option>
+        <option value="p">p </option>
+        <option value="h1">h1 </option>
+    </select>
+    <input type="text" placeholder="имя скласса" value="css">
+    <textarea> контент для блока </textarea>
+    <!--<input type="submit" value="Submit">-->
+    <input type="button" name="submit" value="Submit">
+    <button> 12</button>
+    <div  id="playground"  class="insetdiv">
+
+    </div>
+
+</form>
+
+
+
+<script>
+    var elemSubmit = document.getElementsByName("submit");
+    var btn = document.getElementsByTagName("form");
+    var elemAdd = document.createElement("p"); // тестовый елемент для вставки
+
+    var div = document.getElementById("playground");  // куда вставляем
+    var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент
+    elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса
+    content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду
+    elemAdd.appendChild(content); //вставляем ноду
+    div.appendChild(elemAdd);  // вставляем елемент
+
+     btn.onclick = function (event) {
+        alert(event.target);
+    }
+    console.log(elemSubmit);
+    console.log(document.getElementsByTagName("input")[0].getAttribute('value'));
+    console.log(btn);
+</script>
+</body>
+</html>
