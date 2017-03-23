@@ -5,10 +5,11 @@ form {
     margin: 0 auto;
     width: 350px;
     background-color: darkkhaki;
-    color: #c8c8c8;
+    color: black;
     box-sizing: border-box;
     padding: 10px;
     border-radius: 5px ;
+    text-align: center;
 }
 select,input[type="submit"], input[type="button"],input[type="text"], textarea {
     width: 100%;
@@ -16,6 +17,8 @@ select,input[type="submit"], input[type="button"],input[type="text"], textarea {
     padding: 5px 0;
     border-radius: 5px;
     font-family: 'Bree Serif', serif;
+    text-align: center;
+
 
 
 }
@@ -32,4 +35,9 @@ input[type="submit"] {
 }
 input[type="button"] {
     background-color: snow;
+}
+
+textarea {
+    max-height: 300px;
+
 }
