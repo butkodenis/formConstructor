@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>form</title>
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css">
+    <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css">-->
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,11 +19,12 @@
         <option value="3">создать элемент h1 </option>
     </select>
     <p> назовите стиль элемента </p>
-    <input type="text" placeholder="имя скласса" value="css">
+    <input type="text" placeholder="имя скласса" value="default">
     <p>  контент для элемента</p>
-    <textarea> контент для элемента </textarea>
+    <textarea> test </textarea>
     <!--<input type="submit" value="Submit">-->
     <input type="button" name="submit" value="Submit">
+    <!--<div class="button"></div>-->
     <div  id="playground"  class="insetdiv">
 
     </div>
@@ -35,18 +36,18 @@
 <script>
     var elemSubmit = document.getElementsByName("submit");
     var form = document.body.firstElementChild;
-
+//    var button = document.getElementsByClassName("button");
+   
     var elemAdd = document.createElement("p"); // тестовый елемент для вставки
     var elemAddP = document.createElement("p"); //  елемент для вставки
     var elemAddDiv = document.createElement("div"); //  елемент для вставки
     var elemAddSpan = document.createElement("span"); //  елемент для вставки
     var elemAddH1 = document.createElement("h1"); //  елемент для вставки
-
     var div = document.getElementById("playground");  // куда вставляем
-    var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент
-    elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса
-    content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду
-    elemAdd.appendChild(content); //вставляем ноду
+//    var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент
+//    elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса
+//    content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду
+//    elemAdd.appendChild(content); //вставляем ноду
 //    div.appendChild(elemAdd);  // вставляем елемент
 
 
@@ -65,21 +66,44 @@
         text = select.options[select.selectedIndex].text; // Текстовое значение для выбранного option
 //        alert("Value: " + value + "\nТекст: " + text); // Вывод алерта для проверки значений
         alert(value); // Вывод алерта для проверки значений
-        switch (value) {
-            case 0 : elemAdd = elemAddDiv ; break;
-            case 1 : elemAdd = elemAddSpan ; break;
-            case 2 : elemAdd = elemAddP ; break;
-            case 3 : elemAdd = elemAddH1 ; break;
-        };
-        form.onclick = function () {
-            
-            div.appendChild(elemAdd);  // вставляем елемент
-        };
-    }
 
-    console.log(form);
-    console.log(document.getElementsByTagName("input")[0].getAttribute('value'));
-    console.log(btn);
+        if ( value == 0) {
+            elemAdd = elemAddDiv;
+        }
+        else if ( value == 1) {
+              elemAdd = elemAddSpan;
+        }
+        else if ( value == 2) {
+              elemAdd = elemAddP;
+        }
+        else if ( value == 3) {
+              elemAdd = elemAddH1;
+        }
+        console.log(elemAdd);
+
+        var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент
+            elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса
+            content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду
+            elemAdd.appendChild(content); //вставляем ноду
+
+            div.appendChild(elemAdd);  // вставляем елемент
+
+
+//
+    }
+//    form.onclick = function () {
+//                var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент
+//                elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса
+//                content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду
+//                elemAdd.appendChild(content); //вставляем ноду
+//
+//                div.appendChild(elemAdd);  // вставляем елемент
+//
+//            };
+//
+//    console.log(form);
+//    console.log(document.getElementsByTagName("input")[0].getAttribute('value'));
+//    console.log(btn);
 </script>
 
 
