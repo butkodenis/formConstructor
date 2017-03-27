@@ -43,11 +43,11 @@
        e.preventDefault();
 
 
-       var de = $('div').is(':first-child');
-       console.log(de);
-       if (de == true) {
+       var de = $('#playground').is(':first-child');;
+       console.log($('#playground').children());
+       if (de == false) {
            $('#playground').children().detach(); // очистка если
-//          alert(
+
        }
 
 
@@ -62,7 +62,7 @@
        }  else   {
            elementAdd = "<h1></h1>";
        }
-       console.log(sel);
+//       console.log(sel);
       var value = $('input').val();
       var  text = $('textarea').val();
 
