@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css">-->
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -13,12 +14,12 @@
     <p> выберете какой элемент создать</p>
     <select>
         <option value="0">создать элемент div </option>
-        <option value="1" selected>создать элемент span </option>
+        <option value="1">создать элемент span </option>
         <option value="2">создать элемент p </option>
         <option value="3">создать элемент h1 </option>
     </select>
     <p> назовите стиль элемента </p>
-    <input type="text" placeholder="имя скласса" value="12">
+    <input type="text" placeholder="имя скласса" value="">
     <p>  контент для элемента</p>
     <textarea>1616</textarea>
     <input type="submit" value="Submit">
@@ -29,122 +30,89 @@
     </div>
 
 </form>
+
+
 <script>
-    var elemSubmit = document.getElementsByName("submit"),
-        elemAdd,
-        elemContent,
-        form = document.body.firstElementChild,
-        div = form.lastElementChild,
-        select = form[0],
-        value = select.options[select.selectedIndex].value; // Значение value для выбранного option-->
-//        text = select.options[select.selectedIndex].text; // Текстовое значение для выбранного option
+   var rez = $('#playground');
+   var elementAdd = "<div></div>";
+ if ( $('div').is(':first-child') == true ) {
+     $('#playground').children().remove();
+ }
 
-    form.onsubmit = function (event) {
-        event.preventDefault();
+   $('form').click(function () {
+        var sel =  $("select").val();
+       if (sel == 0) {
+           elementAdd = "<div></div>";
+//           alert("div");
 
-//        if ( value == 0 ) {
-//            elemAdd = document.createElement("div");
-//        }
-//        else  if ( value == 1 ) {
-//            elemAdd = document.createElement("span");
-//        }
-//        else  if ( value == 2 ) {
-//            elemAdd = document.createElement("p");
-//        }
-//        else  if ( value == 3 ) {
-//            elemAdd = document.createElement("h1");
-//        }
+       }
+       else if (sel == 1)  {
+           elementAdd = "<span></span>";
+//           alert("span");
+       }
+       else if (sel == 2)  {
+           elementAdd = "<p></p>";
+//           alert("span");
+       }
+       else   {
+           elementAdd = "<h1></h1>";
+//           alert("span");
+       }
+       console.log(sel);
+      var value = $('input').val();
+      var  text = $('textarea').val();
 
-        var elemAdd = document.createElement("p"); // тестовый елемент для вставки
-//        var elemClass = form[1];
-        elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // добавляем класс
-        elemContent = document.getElementsByTagName("textarea")[0].innerHTML;
-        elemAdd.appendChild(document.createTextNode(elemContent));
-        div.appendChild(elemAdd);
-
-    }
+       $('#playground').append(elementAdd);
+       $('#playground').children().text(text + " это тег " + elementAdd);
+       $('#playground').children().addClass(value);
 
 
-    console.log(form[1]);
-    console.log(document.getElementsByTagName("textarea")[0].childNodes);
+   });
+    var de = $('div').is(':first-child');
 
 </script>
-
-
-
 <!--<script>-->
-    <!--var elemSubmit = document.getElementsByName("submit");-->
-    <!--var form = document.body.firstElementChild;-->
-<!--//    var button = document.getElementsByClassName("button");-->
+    <!--var elemSubmit = document.getElementsByName("submit"),-->
+        <!--elemAdd,-->
+        <!--elemContent,-->
+        <!--form = document.body.firstElementChild,-->
+        <!--div = form.lastElementChild,-->
+        <!--select = form[0],-->
+        <!--value = select.options[select.selectedIndex].value; // Значение value для выбранного option&ndash;&gt;-->
+<!--//        text = select.options[select.selectedIndex].text; // Текстовое значение для выбранного option-->
 
-    <!--var elemAdd = document.createElement("p"); // тестовый елемент для вставки-->
-    <!--var elemAddP = document.createElement("p"); //  елемент для вставки-->
-    <!--var elemAddDiv = document.createElement("div"); //  елемент для вставки-->
-    <!--var elemAddSpan = document.createElement("span"); //  елемент для вставки-->
-    <!--var elemAddH1 = document.createElement("h1"); //  елемент для вставки-->
-    <!--var div = document.getElementById("playground");  // куда вставляем-->
-<!--//    var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент-->
-<!--//    elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса-->
-<!--//    content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду-->
-<!--//    elemAdd.appendChild(content); //вставляем ноду-->
-<!--//    div.appendChild(elemAdd);  // вставляем елемент-->
-
-
-<!--//     form.onclick = function () {-->
-<!--//        div.appendChild(elemAdd);  // вставляем елемент-->
-<!--//    };-->
-
-    <!--function change() {-->
-
-    <!--var  select = document.getElementById("selectId"), // Выбираем  select по id-->
-        <!--value = select.options[select.selectedIndex].value, // Значение value для выбранного option-->
-        <!--text = select.options[select.selectedIndex].text; // Текстовое значение для выбранного option-->
-<!--//        alert("Value: " + value + "\nТекст: " + text); // Вывод алерта для проверки значений-->
-
-        <!--if ( value == 0) {-->
-            <!--elemAdd = elemAddDiv;-->
-        <!--}-->
-        <!--else if ( value == 1) {-->
-              <!--elemAdd = elemAddSpan;-->
-        <!--}-->
-        <!--else if ( value == 2) {-->
-              <!--elemAdd = elemAddP;-->
-        <!--}-->
-        <!--else if ( value == 3) {-->
-              <!--elemAdd = elemAddH1;-->
-        <!--}-->
-        <!--console.log(elemAdd);-->
-        <!--console.log(div.childNodes.length);-->
-    <!--}-->
     <!--form.onsubmit = function (event) {-->
         <!--event.preventDefault();-->
-        <!--var elemContent = document.getElementsByTagName("textarea")[0].innerHTML; // что вставляем контент-->
-        <!--elemAdd.className = document.getElementsByTagName("input")[0].getAttribute('value'); // выбираем атирибут для класса-->
-        <!--content = document.createTextNode(elemContent); //преобразовываем в текстовую ноду-->
-        <!--elemAdd.appendChild(content); //вставляем ноду-->
 
-<!--//        div.removeChild(elemAdd); //удаляем стерое-->
-
-<!--//        if (div.children.length =  1 ) {-->
-<!--//            div.removeChild(elemAdd); //удаляем стерое-->
+<!--//        if ( value == 0 ) {-->
+<!--//            elemAdd = document.createElement("div");-->
 <!--//        }-->
-        <!--if ( div.children.length !=  1) {-->
-            <!--div.appendChild(elemAdd);-->
-        <!--}-->
-        <!--else  ( div.children.length =  1) {-->
-            <!--div.removeChild(elemAdd)};-->
-<!--//         div.appendChild(elemAdd);  // вставляем елемент-->
+<!--//        else  if ( value == 1 ) {-->
+<!--//            elemAdd = document.createElement("span");-->
+<!--//        }-->
+<!--//        else  if ( value == 2 ) {-->
+<!--//            elemAdd = document.createElement("p");-->
+<!--//        }-->
+<!--//        else  if ( value == 3 ) {-->
+<!--//            elemAdd = document.createElement("h1");-->
+<!--//        }-->
+
+        <!--var elemAdd = document.createElement("p"); // тестовый елемент для вставки-->
+<!--//        var elemClass = form[1];-->
+        <!--elemAdd.className = document.getElementsByTagName("input")[0].value; // добавляем класс-->
+        <!--elemContent = document.getElementsByTagName("textarea")[0].value; // добавляем контент-->
+        <!--elemAdd.appendChild(document.createTextNode(elemContent));-->
+        <!--div.appendChild(elemAdd);-->
+
+    <!--}-->
 
 
-<!--//        div.appendChild(elemAdd);  // вставляем елемент-->
-        <!--console.log(div.children.length);-->
+    <!--console.log(form[1]);-->
+    <!--console.log(document.getElementsByTagName("textarea")[0].childNodes);-->
 
-    <!--};-->
-<!--//-->
-<!--//    console.log(form);-->
-<!--//    console.log(document.getElementsByTagName("input")[0].getAttribute('value'));-->
-<!--//    console.log(btn);-->
 <!--</script>-->
+
+
 
 
 </body>
