@@ -41,6 +41,17 @@
 
    $('form').submit(function (e) {
        e.preventDefault();
+
+
+       var de = $('div').is(':first-child');
+       console.log(de);
+       if (de == true) {
+           $('#playground').children().detach(); // очистка если 
+           alert("!!!!");
+       }
+
+
+
         var sel =  $("select").val();
        if (sel == 0) {
            elementAdd = "<div></div>";
@@ -59,12 +70,7 @@
        $('#playground').children().text(text + " это тег " + elementAdd);
        $('#playground').children().addClass(value);
 
-       var de = $('div').is(':first-child');
-       console.log(de);
-       if (de == true) {
-//           $('#playground').children().remove();
-           alert("!!!!");
-       }
+
    });
 
 
