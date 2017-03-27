@@ -21,7 +21,7 @@
     <p> назовите стиль элемента </p>
     <input type="text" placeholder="имя скласса" value="">
     <p>  контент для элемента</p>
-    <textarea>1616</textarea>
+    <textarea placeholder="выводимый контент" ></textarea>
     <input type="submit" value="Submit">
     <!--<input type="button" name="submit" value="Submit">-->
     <!--<div class="button"></div>-->
@@ -39,24 +39,17 @@
      $('#playground').children().remove();
  }
 
-   $('form').click(function () {
+   $('form').submit(function (e) {
+       e.preventDefault();
         var sel =  $("select").val();
        if (sel == 0) {
            elementAdd = "<div></div>";
-//           alert("div");
-
-       }
-       else if (sel == 1)  {
+       }  else if (sel == 1)  {
            elementAdd = "<span></span>";
-//           alert("span");
-       }
-       else if (sel == 2)  {
+       }  else if (sel == 2)  {
            elementAdd = "<p></p>";
-//           alert("span");
-       }
-       else   {
+       }  else   {
            elementAdd = "<h1></h1>";
-//           alert("span");
        }
        console.log(sel);
       var value = $('input').val();
@@ -66,9 +59,14 @@
        $('#playground').children().text(text + " это тег " + elementAdd);
        $('#playground').children().addClass(value);
 
-
+       var de = $('div').is(':first-child');
+       console.log(de);
+       if (de == true) {
+//           $('#playground').children().remove();
+           alert("!!!!");
+       }
    });
-    var de = $('div').is(':first-child');
+
 
 </script>
 <!--<script>-->
